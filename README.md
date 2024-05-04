@@ -8,7 +8,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/omnireceipt/dummy.svg)][link-packagist]
 [![Software License][ico-license]][link-license]
 
-[Omnipay](https://github.com/omnireceipt/common) is a framework agnostic, multi-gateway omnireceipt
+[Omnireceipt](https://github.com/omnireceipt/common) is a framework agnostic, multi-gateway omnireceipt
 processing library for PHP 8.0+.
 
 ## Basic Usage
