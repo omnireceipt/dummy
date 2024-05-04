@@ -1,0 +1,50 @@
+{
+  "name": "omnireceipt/dummy",
+  "description": "Dummy driver for Omnireceipt fiscal receipt processing library",
+  "version": "1.0.0",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "receipt",
+    "fiscal",
+    "omnireceipt",
+    "dummy"
+  ],
+  "homepage": "https://github.com/omnireceipt/dummy",
+  "authors": [
+    {
+      "name": "Alexander Arhitov",
+      "email": "clgsru@gmail.com",
+      "homepage": "https://github.com/arhitov/"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Omnireceipt\\Dummy\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Omnireceipt\\Dummy\\Tests\\": "tests"
+    }
+  },
+  "require": {
+    "php": "^8.0",
+    "omnireceipt/common": "^1.1"
+  },
+  "require-dev": {
+    "guzzlehttp/psr7": "*",
+    "phpunit/phpunit": "*",
+    "php-http/curl-client": "*"
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": false
+    }
+  }
+}
