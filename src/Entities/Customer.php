@@ -12,6 +12,11 @@ namespace Omnireceipt\Dummy\Entities;
 
 use Omnireceipt\Common\Entities\Customer as BaseCustomer;
 
+/**
+ * @method string getUuid()
+ * @method string|null getUuidOrNull()
+ * @method self setUuid(string $value)
+ */
 class Customer extends BaseCustomer
 {
 }

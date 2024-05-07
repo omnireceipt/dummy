@@ -20,12 +20,17 @@ use Omnireceipt\Dummy\Http\DetailsReceiptRequest;
 use Omnireceipt\Dummy\Http\ListReceiptsRequest;
 
 /**
- * @method self setKeyAccess(string $value)
  * @method string getKeyAccess()
- * @method self setUserID(string $value)
- * @method string getUserID()
- * @method self setStoreUUID(string $value)
- * @method string getStoreUUID()
+ * @method string|null getKeyAccessOrNull()
+ * @method self setKeyAccess(string $value)
+ *
+ * @method string getUserId()
+ * @method string|null getUserIdOrNull()
+ * @method self setUserId(string $value)
+ *
+ * @method string getStoreUuid()
+ * @method string|null getStoreUuidOrNull()
+ * @method self setStoreUuid(string $value)
  */
 class Gateway extends AbstractGateway
 {

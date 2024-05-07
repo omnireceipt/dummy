@@ -10,7 +10,6 @@
 
 namespace Omnireceipt\Dummy\Entities;
 
-use Carbon\Carbon;
 use Omnireceipt\Common\Entities\Receipt as BaseReceipt;
 
 /**
@@ -40,10 +39,5 @@ class Receipt extends BaseReceipt
     public function isCancelled(): bool
     {
         return 'canceled' === $this->getState();
-    }
-
-    public function getDate(): Carbon
-    {
-        return Carbon::parse($this->getParameter('date'));
     }
 }
