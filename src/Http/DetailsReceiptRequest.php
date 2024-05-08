@@ -39,12 +39,12 @@ class DetailsReceiptRequest extends AbstractDetailsReceiptRequest
     public function sendData(array $data): AbstractResponse
     {
         $options = [
-            'id' => $data['id'],
+            'uuid' => $data['id'],
         ];
 
         $answer = (new ArrayCollection(Helper::getFixtureAsArray('details_collection')))
                   ->filter(static function(array $item) use ($options) {
-                      return $item['id'] === $options['id'];
+                      return $item['uuid'] === $options['uuid'];
                   })
                   ->first() ?: null;
 

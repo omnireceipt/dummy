@@ -1,6 +1,6 @@
 [
     {
-        "id": "pending-2da5c87d-0384-50e8-a7f3-8d5646dd9e10",
+        "uuid": "pending-2da5c87d-0384-50e8-a7f3-8d5646dd9e10",
         "type": "payment",
         "state": "pending",
         "payment_id": "225d8da0-000f-50be-b000-0003308c89be",
@@ -34,7 +34,7 @@
         ]
     },
     {
-        "id": "succeeded-2da5c87d-0384-50e8-a7f3-8d5646dd9e10",
+        "uuid": "succeeded-2da5c87d-0384-50e8-a7f3-8d5646dd9e10",
         "type": "payment",
         "state": "succeeded",
         "payment_id": "225d8da0-000f-50be-b000-0003308c89be",
@@ -68,7 +68,7 @@
         ]
     },
     {
-        "id": "canceled-2da5c87d-0384-50e8-a7f3-8d5646dd9e10",
+        "uuid": "canceled-2da5c87d-0384-50e8-a7f3-8d5646dd9e10",
         "type": "payment",
         "state": "canceled",
         "payment_id": "225d8da0-000f-50be-b000-0003308c89be",
