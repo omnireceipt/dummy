@@ -26,6 +26,11 @@ use Omnireceipt\Common\Entities\Receipt as BaseReceipt;
  */
 class Receipt extends BaseReceipt
 {
+    public function getId(): string
+    {
+        return $this->getUuid();
+    }
+
     public function isPending(): bool
     {
         return 'pending' === $this->getState();
