@@ -15,9 +15,8 @@ use Omnireceipt\Common\AbstractGateway;
 use Omnireceipt\Dummy\Entities\Customer;
 use Omnireceipt\Dummy\Entities\Receipt;
 use Omnireceipt\Dummy\Entities\Seller;
-use Omnireceipt\Dummy\Http\CreateReceiptRequest;
-use Omnireceipt\Dummy\Http\DetailsReceiptRequest;
-use Omnireceipt\Dummy\Http\ListReceiptsRequest;
+use Omnireceipt\Dummy\Fixtures;
+use Omnireceipt\Dummy\Http;
 
 /**
  * @method string getKeyAccess()
@@ -37,7 +36,8 @@ class Gateway extends AbstractGateway
     public static function rules(): array
     {
         return [
-            'auth' => ['required', 'string', 'in:ok'],
+            'auth'    => ['required', 'string', 'in:ok'],
+            'fixture' => ['required', 'boolean'],
         ];
     }
 
@@ -50,7 +50,7 @@ class Gateway extends AbstractGateway
     // Seller
     //########
 
-    public static function classNameSeller(): string
+    public function classNameSeller(): string
     {
         return Seller::class;
     }
@@ -66,7 +66,7 @@ class Gateway extends AbstractGateway
     // Customer
     //##########
 
-    public static function classNameCustomer(): string
+    public function classNameCustomer(): string
     {
         return Customer::class;
     }
@@ -82,7 +82,7 @@ class Gateway extends AbstractGateway
     // Receipt and ReceiptItem
     //#########################
 
-    public static function classNameReceipt(): string
+    public function classNameReceipt(): string
     {
         return Receipt::class;
     }
@@ -118,18 +118,30 @@ class Gateway extends AbstractGateway
     // HTTP Request Methods
     //######################
 
-    public static function classNameCreateReceiptRequest(): string
+    public function classNameCreateReceiptRequest(): string
     {
-        return CreateReceiptRequest::class;
+        if ($this->getParameter('fixture')) {
+            return Fixtures\CreateReceiptRequest::class;
+        } else {
+            return Http\CreateReceiptRequest::class;
+        }
     }
 
-    public static function classNameListReceiptsRequest(): string
+    public function classNameListReceiptsRequest(): string
     {
-        return ListReceiptsRequest::class;
+        if ($this->getParameter('fixture')) {
+            return Fixtures\ListReceiptsRequest::class;
+        } else {
+            return Http\ListReceiptsRequest::class;
+        }
     }
 
-    public static function classNameDetailsReceiptRequest(): string
+    public function classNameDetailsReceiptRequest(): string
     {
-        return DetailsReceiptRequest::class;
+        if ($this->getParameter('fixture')) {
+            return Fixtures\DetailsReceiptRequest::class;
+        } else {
+            return Http\DetailsReceiptRequest::class;
+        }
     }
 }

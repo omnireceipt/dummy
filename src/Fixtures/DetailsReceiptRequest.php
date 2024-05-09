@@ -8,8 +8,9 @@
  * @copyright Copyright (c) 2024, Alexander Arhitov, clgsru@gmail.com
  */
 
-namespace Omnireceipt\Dummy\Http;
+namespace Omnireceipt\Dummy\Fixtures;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Omnireceipt\Common\Http\Request\AbstractDetailsReceiptRequest;
 use Omnireceipt\Common\Http\Response\AbstractResponse;
 
@@ -20,23 +21,6 @@ use Omnireceipt\Common\Http\Response\AbstractResponse;
  */
 class DetailsReceiptRequest extends AbstractDetailsReceiptRequest
 {
-    use BaseRequestTrait;
-
-    protected function getEndpoint(): string
-    {
-        return 'https://www.example.com/api/v1/receipt/{uuid}';
-    }
-
-    public function getRequestMethod(): string
-    {
-        return 'GET';
-    }
-
-    protected function getRequestUrl(array $queryParams = null): string
-    {
-        return str_replace('{uuid}', $this->getId(), $this->getEndpoint());
-    }
-
     public static function rules(): array
     {
         return [
@@ -53,8 +37,14 @@ class DetailsReceiptRequest extends AbstractDetailsReceiptRequest
 
     public function sendData(array $data): AbstractResponse
     {
-        $response = $this->request([$data]);
+        $options = [
+            'uuid' => $data['id'],
+        ];
 
-        return new DetailsReceiptResponse($this, $response->getBody(), $response->getStatusCode());
+        $item = Helper::getFixtureAsArray('details');
+
+        return $item['uuid'] === $options['uuid']
+            ? new DetailsReceiptResponse($this, $item, 200)
+            : new DetailsReceiptResponse($this, null, 404);
     }
 }

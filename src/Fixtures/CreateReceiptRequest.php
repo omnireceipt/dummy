@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2024, Alexander Arhitov, clgsru@gmail.com
  */
 
-namespace Omnireceipt\Dummy\Http;
+namespace Omnireceipt\Dummy\Fixtures;
 
 use Omnireceipt\Common\Http\Request\AbstractCreateReceiptRequest;
 use Omnireceipt\Common\Http\Response\AbstractResponse;
@@ -17,18 +17,6 @@ use Omnireceipt\Dummy\Entities\ReceiptItem;
 
 class CreateReceiptRequest extends AbstractCreateReceiptRequest
 {
-    use BaseRequestTrait;
-
-    protected function getEndpoint(): string
-    {
-        return 'https://www.example.com/api/v1/receipt';
-    }
-
-    public function getRequestMethod(): string
-    {
-        return 'POST';
-    }
-
     static public function rules(): array
     {
         return [];
@@ -74,8 +62,6 @@ class CreateReceiptRequest extends AbstractCreateReceiptRequest
 
     public function sendData(array $data): AbstractResponse
     {
-        $response = $this->request([$data]);
-
-        return new CreateReceiptResponse($this, $response->getBody(), $response->getStatusCode());
+        return new CreateReceiptResponse($this, null, 200);
     }
 }

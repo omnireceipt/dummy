@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2024, Alexander Arhitov, clgsru@gmail.com
  */
 
-namespace Omnireceipt\Dummy\Http;
+namespace Omnireceipt\Dummy\Fixtures;
 
 use Carbon\Carbon;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -26,18 +26,6 @@ use Omnireceipt\Common\Http\Response\AbstractResponse;
  */
 class ListReceiptsRequest extends AbstractListReceiptRequest
 {
-    use BaseRequestTrait;
-
-    protected function getEndpoint(): string
-    {
-        return 'https://www.example.com/api/v1/receipt';
-    }
-
-    public function getRequestMethod(): string
-    {
-        return 'GET';
-    }
-
     public static function rules(): array
     {
         return [
@@ -61,8 +49,19 @@ class ListReceiptsRequest extends AbstractListReceiptRequest
             'date_to' => $data['date_to'],
         ];
 
-        $response = $this->request([$options]);
+        $collection = (new ArrayCollection(Helper::getFixtureAsArray('list')))
+                      ->filter(static function (array $item) use ($options) {
+                          if (! empty($options['date_from']) && ! Carbon::parse($item['date'])->gte(Carbon::parse($options['date_from']))) {
+                              return false;
+                          }
+                          if (! empty($options['date_to']) && ! Carbon::parse($item['date'])->lte(Carbon::parse($options['date_to']))) {
+                              return false;
+                          }
+                          return true;
+                      });
 
-        return new ListReceiptsResponse($this, $response->getBody(), $response->getStatusCode());
+        return $collection->count()
+            ? new ListReceiptsResponse($this, $collection->toArray(), 200)
+            : new ListReceiptsResponse($this, null, 404);
     }
 }

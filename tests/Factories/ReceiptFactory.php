@@ -25,7 +25,7 @@ class ReceiptFactory extends Factory
             'type' => 'payment',
             'payment_id' => '24b94598-000f-5000-9000-1b68e7b15f3f',
             'info' => 'Lego Bricks',
-            'date' => '2016-08-25 13:48:01',
+            'date' => '2024-05-05 13:48:01',
             'asd_sdf' => 123,
         ];
     }

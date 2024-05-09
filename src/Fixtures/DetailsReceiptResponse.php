@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2024, Alexander Arhitov, clgsru@gmail.com
  */
 
-namespace Omnireceipt\Dummy\Http;
+namespace Omnireceipt\Dummy\Fixtures;
 
 use Omnireceipt\Common\Http\Response\AbstractDetailsReceiptResponse;
 use Omnireceipt\Dummy\Entities\Receipt;
@@ -16,12 +16,10 @@ use Omnireceipt\Dummy\Entities\ReceiptItem;
 
 class DetailsReceiptResponse extends AbstractDetailsReceiptResponse
 {
-    use BaseResponseTrait;
-
     public function getReceipt(): ?Receipt
     {
         /** @var array|null $receiptArray */
-        $receiptArray = $this->getPayload();
+        $receiptArray = $this->getData();
         if (is_null($receiptArray)) {
             return null;
         }
