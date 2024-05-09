@@ -22,7 +22,7 @@ class CustomerFactory extends Factory
     public static function definition(): array
     {
         return [
-            'id'    => '4a65ecb6-8b1b-11df-be16-e0cb4ed5f70f',
+            'uuid'  => '4a65ecb6-8b1b-11df-be16-e0cb4ed5f70f',
             'name'  => 'Alexander Arhitov',
             'email' => 'clgsru@gmail.com',
         ];

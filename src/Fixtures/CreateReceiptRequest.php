@@ -33,7 +33,7 @@ class CreateReceiptRequest extends AbstractCreateReceiptRequest
         /** @var ReceiptItem $item */
         foreach ($receipt->getItemList() as $item) {
             $goods[] = [
-                'uuid'     => $receipt->getUuid(),
+                'uuid'     => $receipt->getId(),
                 'name'     => $item->getName(),
                 'code'     => $item->getCode(),
                 'type'     => $item->getType(),
@@ -47,7 +47,7 @@ class CreateReceiptRequest extends AbstractCreateReceiptRequest
         }
 
         return [
-            'uuid'         => $receipt->getUuid(),
+            'uuid'         => $receipt->getId(),
             'date'         => $receipt->getDate(),
             'payment_id'   => $receipt->getPaymentId(),
             'client_uuid'  => $receipt->getCustomer()->getId(),

@@ -147,8 +147,6 @@ class GatewayTest extends TestCase
 
         /** @var ReceiptItem $receiptItem */
         $receiptItem = ReceiptItemFactory::create($omnireceipt->classNameReceiptItem());
-        $receiptItem->setVatRate(0);
-        $receiptItem->setVatSum(0);
         $receipt->addItem($receiptItem);
 
         $this->assertTrue($receipt->validate());
@@ -193,8 +191,6 @@ class GatewayTest extends TestCase
 
         /** @var ReceiptItem $receiptItem */
         $receiptItem = ReceiptItemFactory::create($omnireceipt->classNameReceiptItem());
-        $receiptItem->setVatRate(0);
-        $receiptItem->setVatSum(0);
         $receipt->addItem($receiptItem);
 
         $this->assertTrue($receipt->validate());

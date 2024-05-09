@@ -22,6 +22,7 @@ class SellerFactory extends Factory
     public static function definition(): array
     {
         return [
+            'uuid' => 'cb4ed5f7-8b1b-11df-be16-e04a65ecb60f',
             'name' => 'LLC "HORNS AND HOOVES"',
         ];
     }

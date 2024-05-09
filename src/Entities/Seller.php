@@ -14,9 +14,12 @@ use Omnireceipt\Common\Entities\Seller as BaseSeller;
 
 /**
  * @method string getUuid()
- * @method string|null getUuidOrNull()
  * @method self setUuid(string $value)
  */
 class Seller extends BaseSeller
 {
+    public function getId(): string
+    {
+        return $this->getUuid();
+    }
 }
